@@ -14,12 +14,25 @@
     input, select, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; margin-top:5px; }
     textarea { height:80px; }
     button { width:100%; padding:12px; background:#004c97; color:white; border:none; border-radius:8px; margin-top:15px; cursor:pointer; font-size:16px; }
+
+    /* رسالة النجاح */
+    #successBox {
+        display:none;
+        text-align:center;
+        padding:25px;
+        background:white;
+        border-radius:12px;
+        margin-top:25px;
+        box-shadow:0 0 10px #ccc;
+        color:green;
+        font-size:20px;
+    }
 </style>
 
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="formBox">
 
     <!-- الشعار -->
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAMAAABYsYwOAAABFVBMVEUAAAD///8AgIBtbW3w8PB+fn7s7OxaWloAAAAAAAB0dHShoaHR0dHk5OTAzMwA0NDRAQECxsbGVlZVJSUoHBwdfX1/g4OBBQUE/Pz+mpqYWFhYvLy+enp4MDAwSEhLw8PDExMTo6Ojz8/Oenp7l5eUVFRWZmZl3d3dHh4eCgoJTU1NeXl6QkJDZ2dl9fX2SkpKqqqrc3Nzh4eHg4OBvb2+jo6OGhobKysqqqqsRERMNzc3R0dB2dnZ4eHi2traYmJimpmf39/j5+fT09OHh4e2traMjIzi4+N8fHyXl5fDw8O4uLhycnJlZWX////QK2I5AAAAdHRSTlMAAQIDBAUGCAoMDxESFBUXGBkcHh8gIiQlKy4wMzU3ODk7PD9BQkZJS05QUlRbXmFnaGxvdXh6hYaHiY+SlZeZm52go6WnsbK1uLm6vcDFx8rMzdHU19rb3N7f4uPk5ebo7O7x9fb4+vv8/f7lDccyAAAE5UlEQVR4nO2d23aqMBCGJVqKtu2lbdu2be7//9u2bdu2bdtp2JSM9N5nZsrkGPOGX3uIpISnH0xPx4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwCjPq7vHGawEq+y3OC/YLXTr4Wr9PXgY7vRl6VwBEm90LkAMPx/+qvOB0fOkH4An1xd6QwAWXlznEU61sI3RB3LjQp8dkUBaRdOyqK8BPVKx/aRXefxWWEXUvhYaL6VLdystD5nq2WEYLRh1SeDsICoZ6irMIXja+6JGZveHFkNjEcNWef39/C4R2tQeM+c/fi91tIbp/BK+f5dyFjgAuC8W9jAq56k97X3gSdz8sRP/6IDdnh3oX1+MKCAVccawJgN9zeps2sonMSKcwkE2RZndKyGKoU9pYNCXS6tlNZFwXk4Hknc0NrF4Pjk6HoydxHDBPPfQtbDNRsTA70vsK1tnE+bBZ5//aSQk0U8nyCLlcHO9bHhtq/Y5cHIzoHmr18bODsPwhjNzklOMrgJUg87bawn94Qh1g0K1TKoEt1TGVtCqzqDVSZ/Ik2Vq6KYFAsktwVDqveufkn4GoS1J8QjcqxbPjzvY4xXHzkwmo7aX6ixkmKuuNHYsYvwdivEafgAvFp8ZUBKbjDg7sWXBJgp7wa9u0edPFpKnzGWx/89Zbdu2bdu2bdu2bXbv/9wO8Qv0wCr9hbwUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAf/gD0ZKmzdGpbnUAAAAASUVORK5CYII=" />
@@ -70,6 +83,12 @@
 
 </div>
 
+<!-- رسالة الشكر -->
+<div id="successBox">
+    <h2>تم استلام طلبك بنجاح</h2>
+    <p>سوف يتم التواصل معك قريبًا.</p>
+</div>
+
 <script>
 function sendData() {
 
@@ -94,7 +113,11 @@ function sendData() {
         body: JSON.stringify(data)
     });
 
-    window.location.href = "success.html";
+    // إخفاء النموذج
+    document.getElementById("formBox").style.display = "none";
+
+    // إظهار رسالة النجاح
+    document.getElementById("successBox").style.display = "block";
 }
 </script>
 
